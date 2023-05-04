@@ -2,7 +2,7 @@ const express = require("express");
 const server = express();
 
 server.all("/", (req, res) => {
-  console.log("Bot is Running");
+  console.log("Bot is Running")
 });
 
 function keepAlive() {

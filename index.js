@@ -5,7 +5,7 @@ const mySecret = process.env['TOKEN']
 const keepAlive = require("./server");
 const Database = require("@replit/database");
 
-const myUrl = "https://zenquotes.io/api/random";
+const myUrl = "https://zenquotes.io/api/random"
 
 const db = new Database();
 
