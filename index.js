@@ -22,7 +22,6 @@ const sadWords = ["sad", "depressed", "unhappy", "angry"];
 const starterEncouragements = [
   "Cheer up!",
   "Hang in there.",
-  "You are a great person / bot!",
 ];
 
 db.get("encouragements").then((encouragements) => {
@@ -71,10 +70,17 @@ client.on("messageCreate", (message) => {
   }
 
   db.get("responding").then((responding) => {
+    console.log("responding:", responding);
+    if(!responding){
+      db.set("responding", true)
+    }
     if (responding && sadWords.some((word) => message.content.includes(word))) {
+      console.log("message contains sad word:", message.content);
       db.get("encouragements").then((encouragements) => {
+        console.log("encouragements:", encouragements);
         const encouragement =
           encouragements[Math.floor(Math.random() * encouragements.length)];
+        console.log("encouragement:", encouragement);
         message.reply({
           content: `${encouragement}`,
         });
